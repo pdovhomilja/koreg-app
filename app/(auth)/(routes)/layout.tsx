@@ -3,7 +3,7 @@ import "@/app/globals.css";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const metadata = {
-  title: "NextCRM - Sign in",
+  title: process.env.NEXT_PUBLIC_APP_NAME + "-" + " Login" ?? "App",
   description: "",
 };
 

@@ -20,7 +20,7 @@ export async function POST(
       return new NextResponse("Password does not match", { status: 401 });
     }
 
-    const checkexisting = await prismadb.users.findFirst({
+    const checkexisting = await prismadb.user.findFirst({
       where: {
         email: email,
       },
@@ -30,17 +30,13 @@ export async function POST(
       return new NextResponse("User already exist", { status: 401 });
     }
 
-    const user = await prismadb.users.create({
+    const user = await prismadb.user.create({
       data: {
         name,
         username,
-        avatar: "",
-        account_name: "",
-        is_account_admin: false,
-        is_admin: false,
+        image: "",
         email,
-        userLanguage: language,
-        password: await hash(password, 12),
+        hashedPassword: await hash(password, 12),
       },
     });
 
@@ -62,7 +58,7 @@ export async function GET(
   }
 
   try {
-    const users = await prismadb.users.findMany({});
+    const users = await prismadb.user.findMany({});
 
     return NextResponse.json(users);
   } catch (error) {

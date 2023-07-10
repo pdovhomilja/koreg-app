@@ -21,21 +21,18 @@ const Header = ({ name, email, avatar, lang }: Props) => {
       <div className="flex h-20 justify-between items-center p-5 space-x-5">
         <div className="flex justify-center ">
           <div className="flex w-full max-w-sm items-center space-x-2">
-            <Input type="text" placeholder={"Search"} />
+            <Input type="text" placeholder={""} />
             <Button type="submit" className="gap-2">
-              <span className="hidden md:flex">Search</span>
+              <span className="hidden md:flex">Vyhledat</span>
               <SearchIcon />
             </Button>
           </div>
         </div>
         <div className="flex items-center gap-5">
-          <CommandComponent />
-          <SetLanguage />
           <ThemeToggle />
           <div className="hidden lg:flex flex-col text-xs text-gray-500">
             <div>{name}</div>
             <div>{email}</div>
-            <div>Language: {lang}</div>
           </div>
           <AvatarDropdown avatar={avatar} />
         </div>

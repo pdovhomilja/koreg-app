@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/app/providers/ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "NextCRM",
+  title: process.env.NEXT_PUBLIC_APP_NAME ?? "App",
   description: "",
 };
 

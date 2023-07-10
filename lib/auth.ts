@@ -46,19 +46,19 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Invalid credentials");
         }
 
-        const user = await prismadb.users.findFirst({
+        const user = await prismadb.user.findFirst({
           where: {
             email: credentials.email,
           },
         });
 
-        if (!user || !user?.password) {
+        if (!user || !user?.hashedPassword) {
           throw new Error("Invalid credentials");
         }
 
         const isCorrectPassword = await bcrypt.compare(
           credentials.password,
-          user.password
+          user.hashedPassword
         );
 
         if (!isCorrectPassword) {
@@ -72,7 +72,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async session({ token, session }: any) {
-      const user = await prismadb.users.findFirst({
+      const user = await prismadb.user.findFirst({
         where: {
           email: token.email,
         },
@@ -81,44 +81,28 @@ export const authOptions: NextAuthOptions = {
       //If user not found in localDB, create new user
       if (!user) {
         try {
-          const newUser = await prismadb.users.create({
+          const newUser = await prismadb.user.create({
             data: {
               email: token.email,
               name: token.name,
-              avatar: token.picture,
-              is_admin: false,
-              is_account_admin: false,
-              userStatus: "PENDING",
+              image: token.picture,
             },
           });
 
           //Put new created user data in session
           session.user.id = newUser.id;
-          session.user._id = newUser.id;
           session.user.name = newUser.name;
           session.user.email = newUser.email;
-          session.user.avatar = newUser.avatar;
-          session.user.image = newUser.avatar;
-          session.user.isAdmin = false;
-          session.user.userLanguage = newUser.userLanguage;
-          session.user.userStatus = newUser.userStatus;
+          session.user.image = newUser.image;
           return session;
         } catch (error) {
           return console.log(error);
         }
       } else {
-        //console.log(user, "user");
-
-        //User allready exist in localDB, put user data in session
         session.user.id = user.id;
-        session.user._id = user.id;
         session.user.name = user.name;
         session.user.email = user.email;
-        session.user.avatar = user.avatar;
-        session.user.image = user.avatar;
-        session.user.isAdmin = user.is_admin;
-        session.user.userLanguage = user.userLanguage;
-        session.user.userStatus = user.userStatus;
+        session.user.image = user.image;
         return session;
       }
     },

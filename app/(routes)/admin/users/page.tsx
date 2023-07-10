@@ -17,7 +17,7 @@ const AdminUsersPage = async (props: Props) => {
     >
       <div className="flex-col1">
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-          Invite new user to NextCRM
+          Invite new user to {process.env.NEXT_PUBLIC_APP_NAME}
         </h4>
         <InviteForm />
       </div>

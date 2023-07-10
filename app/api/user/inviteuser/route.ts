@@ -41,7 +41,7 @@ export async function POST(
         message = `You have been invited to ${process.env.NEXT_PUBLIC_APP_NAME} \n\n Your username is: ${email} \n\n Your password is: ${password} \n\n Please login to ${process.env.NEXT_PUBLIC_APP_URL} \n\n Thank you \n\n ${process.env.NEXT_PUBLIC_APP_NAME}`;
         break;
     }
-    const checkexisting = await prismadb.users.findFirst({
+    const checkexisting = await prismadb.user.findFirst({
       where: {
         email: email,
       },
@@ -62,18 +62,13 @@ export async function POST(
       });
       //return res.status(201).json({ status: true, password });
       try {
-        const user = await prismadb.users.create({
+        const user = await prismadb.user.create({
           data: {
             name,
-            username: "  ",
-            avatar: "",
-            account_name: "",
-            is_account_admin: false,
-            is_admin: false,
+            username: "",
+            image: "",
             email,
-            userStatus: "ACTIVE",
-            userLanguage: language,
-            password: await hash(password, 12),
+            hashedPassword: await hash(password, 12),
           },
         });
         return NextResponse.json(user);

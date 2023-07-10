@@ -14,7 +14,7 @@ const AdminUsersPage = async (props: Props) => {
   return (
     <Container
       title="Modules administration"
-      description={"Here you can manage your NextCRM modules"}
+      description={`Here you can manage your ${process.env.NEXT_PUBLIC_APP_NAME} modules`}
     >
       <DataTable columns={columns} data={modules} search="name" />
     </Container>

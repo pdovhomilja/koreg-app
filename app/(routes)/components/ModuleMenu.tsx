@@ -26,7 +26,7 @@ const ModuleMenu = ({ modules }: Props) => {
             }`}
             onClick={() => setOpen(!open)}
           >
-            N
+            K
           </div>
 
           <h1
@@ -34,7 +34,7 @@ const ModuleMenu = ({ modules }: Props) => {
               !open && "scale-0"
             }`}
           >
-            NextCRM
+            {process.env.NEXT_PUBLIC_APP_NAME ?? "App"}
           </h1>
         </div>
         <ul className="pt-6">

@@ -84,8 +84,8 @@ export function LoginComponent() {
   return (
     <Card className="shadow-lg">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">Login</CardTitle>
-        <CardDescription>Click here to login with: </CardDescription>
+        <CardTitle className="text-2xl">Přihlášení</CardTitle>
+        <CardDescription>Klikněte zde a přihlašte se pomocí: </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className="grid grid-cols-2 gap-6">
@@ -112,7 +112,7 @@ export function LoginComponent() {
           </div>
           <div className="relative flex justify-center text-xs uppercase">
             <span className="bg-background px-2 text-muted-foreground">
-              Or continue with
+              nebo pokračujte s
             </span>
           </div>
         </div>
@@ -177,10 +177,10 @@ export function LoginComponent() {
                       : "hidden"
                   }
                 >
-                  N
+                  K
                 </span>
-                <span className={isLoading ? " " : "hidden"}>Loanding ...</span>
-                <span className={isLoading ? "hidden" : ""}>Loading</span>
+                <span className={isLoading ? " " : "hidden"}>Ověřuji ...</span>
+                <span className={isLoading ? "hidden" : ""}>Přihlásit</span>
               </Button>
             </div>
           </form>
@@ -188,9 +188,9 @@ export function LoginComponent() {
       </CardContent>
       <CardFooter className="flex flex-col space-y-5">
         <div className="text-sm text-gray-500">
-          Need account? Register{" "}
+          Potřebujete přístup? Registrujte se{" "}
           <Link href={"/register"} className="text-blue-500">
-            here
+            zde
           </Link>
         </div>
       </CardFooter>

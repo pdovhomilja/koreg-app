@@ -8,7 +8,7 @@ import SideBar from "./components/SideBar";
 import Footer from "./components/Footer";
 
 export const metadata = {
-  title: "NextCRM",
+  title: process.env.NEXT_PUBLIC_APP_NAME ?? "App",
   description: "",
 };
 
@@ -21,12 +21,6 @@ export default async function RootLayout({
 
   if (!session) {
     return redirect("/sign-in");
-  }
-
-  const user = session?.user;
-
-  if (user?.userStatus === "PENDING") {
-    return redirect("/pending");
   }
 
   return (
