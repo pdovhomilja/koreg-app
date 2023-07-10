@@ -14,12 +14,12 @@ export async function POST(
   }
 
   try {
-    const user = await prismadb.users.update({
+    const user = await prismadb.user.update({
       where: {
         id: params.userId,
       },
       data: {
-        is_admin: true,
+        isAdmin: true,
       },
     });
 

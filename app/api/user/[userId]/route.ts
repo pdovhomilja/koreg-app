@@ -15,7 +15,7 @@ export async function GET(
   }
 
   try {
-    const user = await prismadb.users.findMany({
+    const user = await prismadb.user.findMany({
       where: {
         id: params.userId,
       },
@@ -39,7 +39,7 @@ export async function DELETE(
   }
 
   try {
-    const user = await prismadb.users.delete({
+    const user = await prismadb.user.delete({
       where: {
         id: params.userId,
       },
