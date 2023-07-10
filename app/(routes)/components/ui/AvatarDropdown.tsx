@@ -31,16 +31,14 @@ const AvatarDropdown = ({ avatar }: Props) => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>Můj účet</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Link href="/profile">Profile</Link>
+          <Link href="/profile">Profil</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>Billing</DropdownMenuItem>
-        <DropdownMenuItem>Team</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <div onClick={() => signOut()}>Sign out</div>
+          <div onClick={() => signOut()}>Odhlásit</div>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
